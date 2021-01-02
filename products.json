@@ -1,0 +1,20 @@
+---
+---
+{
+	"products" : [
+		{% for product in site.data.products %}
+		{
+			"name" : "{{ product.name }}",
+			"price" : "{{ product.price }}",
+			"options" : [
+				{ "Size" : "{{ product.Size }}" }{% if product.Color %},
+				{ "Color" : "{{ product.Color }}" }{% endif %}{% if product.OneOfAKind %},
+				{ "OneOfAKind" : "{{ product.OneOfAKind }}" }{% endif %}
+			],
+			"image" : "{{ product.image }}",
+			"description" : "{{ product.description }}"
+		}{% unless forloop.last %},{% endunless %}
+		{% endfor %}
+	]
+}
+ 
